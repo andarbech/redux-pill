@@ -1,7 +1,12 @@
 const initialState = {
   properties: [],
   filters: {
-    type: [],
+    type: {
+      house: false,
+      flat: false,
+      penthouse: false,
+      duplex: false
+    },
     state: [],
     bedrooms: null,
     bathrooms: null,

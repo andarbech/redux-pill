@@ -9,7 +9,17 @@ import {
   SET_ADDITIONAL_FILTERS,
 } from "./types";
 
-export const setHouseType = (value) => ({
+export const setHouseType = (value, checked) => ({
   type: SET_HOUSE_TYPE,
+  payload: { value, checked },
+});
+
+export const setBedroomsNumber = (value) => ({
+  type: SET_NUMBER_OF_BEDROOMS,
+  payload: value,
+});
+
+export const setBathroomsNumber = (value) => ({
+  type: SET_NUMBER_OF_BATHROOMS,
   payload: value,
 });

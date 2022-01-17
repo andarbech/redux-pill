@@ -2,64 +2,73 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { RangeSlider, Select, Option } from "@ui5/webcomponents-react";
 
-import { setHouseType } from "../../redux/filter/actions";
+import {
+  setHouseType,
+  setBedroomsNumber,
+  setBathroomsNumber
+} from "../../redux/filter/actions";
 
 import "./styles.css";
 
 const Filter = () => {
   const dispatch = useDispatch();
 
+  const handleSetType = ({ target }) => {
+    dispatch(setHouseType(target.value, target.checked));
+  };
+
+  const handleSetBedrooms = ({ target }) => {
+    console.log(target.value)
+    dispatch(setBedroomsNumber(target.value));
+  };
+
+  const handleSetBathrooms = ({ target }) => {
+    dispatch(setBathroomsNumber(target.value));
+  };
+
   return (
     <>
       <form className="filters_form">
         <div>
-          <h5>Type house</h5>
+          <h5>Type of home</h5>
           <div className="typeHouse">
             <div>
               <input
-                value="House"
-                name="typeHouse"
+                value="house"
+                name="house"
                 type="checkbox"
                 id="HouseInput"
-                onChange={({ target }) => {
-                  dispatch(setHouseType(target.value));
-                }}
+                onChangeCapture={handleSetType}
               />
               <label htmlFor="HouseInput">House</label>
             </div>
             <div>
               <input
-                value="Flat"
-                name="typeHouse"
+                value="flat"
+                name="flat"
                 type="checkbox"
                 id="flat"
-                onChange={({ target }) => {
-                  dispatch(setHouseType(target.value));
-                }}
+                onChangeCapture={handleSetType}
               />
               <label htmlFor="flat">Flat/ apartament</label>
             </div>
             <div>
               <input
-                value="Penthouse"
-                name="typeHouse"
+                value="penthouse"
+                name="penthouse"
                 type="checkbox"
                 id="penthouse"
-                onChange={({ target }) => {
-                  dispatch(setHouseType(target.value));
-                }}
+                onChangeCapture={handleSetType}
               />
               <label htmlFor="penthouse">Penthouse</label>
             </div>
             <div>
               <input
-                value="Duplex"
-                name="typeHouse"
+                value="duplex"
+                name="duplex"
                 type="checkbox"
                 id="duplex"
-                onChange={({ target }) => {
-                  dispatch(setHouseType(target.value));
-                }}
+                onChangeCapture={handleSetType}
               />
               <label htmlFor="duplex">Duplex</label>
             </div>
@@ -70,22 +79,46 @@ const Filter = () => {
           <h5>Bedrooms</h5>
           <div className="bedrooms">
             <label className="container">
-              <input value="0" name="bedroom" type="checkbox" id="studio"></input>
+              <input
+                value="0"
+                name="bedroom"
+                type="checkbox"
+                id="studio"
+                onChangeCapture={handleSetBedrooms}
+              />
               <span className="checkmark"> 0+</span>
             </label>
 
             <label className="container">
-              <input value="1" name="bedroom" type="checkbox" id="oneBed"></input>
+              <input
+                value="1"
+                name="bedroom"
+                type="checkbox"
+                id="oneBed"
+                onChangeCapture={handleSetBedrooms}
+              />
               <span className="checkmark">1</span>
             </label>
 
             <label className="container">
-              <input value="2" name="bedroom" type="checkbox" id="twoBed"></input>
+              <input
+                value="2"
+                name="bedroom"
+                type="checkbox"
+                id="twoBed"
+                onChangeCapture={handleSetBedrooms}
+              />
               <span className="checkmark">2</span>
             </label>
 
             <label className="container">
-              <input value="3" name="bedroom" type="checkbox" id="treeBed"></input>
+              <input
+                value="3"
+                name="bedroom"
+                type="checkbox"
+                id="treeBed"
+                onChangeCapture={handleSetBedrooms}
+              />
               <span className="checkmark">3</span>
             </label>
 
@@ -95,7 +128,8 @@ const Filter = () => {
                 name="bedroom"
                 type="checkbox"
                 id="forOrMoreBed"
-              ></input>
+                onChangeCapture={handleSetBedrooms}
+              />
               <span className="checkmark"> 4+</span>
             </label>
           </div>
@@ -110,7 +144,7 @@ const Filter = () => {
                 name="bathrooms"
                 type="checkbox"
                 id="oneBath"
-              ></input>
+              />
               <span className="checkmark">1</span>
             </label>
 
@@ -120,7 +154,7 @@ const Filter = () => {
                 name="bathrooms"
                 type="checkbox"
                 id="twoBath"
-              ></input>
+              />
               <span className="checkmark">2</span>
             </label>
 
@@ -130,7 +164,7 @@ const Filter = () => {
                 name="bathrooms"
                 type="checkbox"
                 id="threeOrMoreBath"
-              ></input>
+              />
               <span className="checkmark">3+</span>
             </label>
           </div>
@@ -145,7 +179,7 @@ const Filter = () => {
           </Select>
         </div>
         <div>
-          <h5>State</h5>
+          <h5>Condition</h5>
           <div className="houseState">
             <div>
               <input
@@ -153,7 +187,7 @@ const Filter = () => {
                 name="house_State"
                 type="checkbox"
                 id="Needs_renovation"
-              ></input>
+              />
               <label htmlFor="Needs_renovation">Needs renovation</label>
             </div>
             <div>
@@ -162,7 +196,7 @@ const Filter = () => {
                 name="house_State"
                 type="checkbox"
                 id="New_house"
-              ></input>
+              />
               <label htmlFor="New_house">New House</label>
             </div>
             <div>
@@ -171,7 +205,7 @@ const Filter = () => {
                 name="house_State"
                 type="checkbox"
                 id="Good_condition"
-              ></input>
+              />
               <label htmlFor="Good_condition">Good condition</label>
             </div>
           </div>
@@ -189,7 +223,7 @@ const Filter = () => {
           />
         </div>
         <div>
-          <h5>Publication Date</h5>
+          <h5>Publication date</h5>
           <Select>
             <Option>last 48 hours</Option>
             <Option>last 36 hours</Option>

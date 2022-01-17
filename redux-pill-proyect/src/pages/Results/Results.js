@@ -1,11 +1,12 @@
+import { Table } from "@ui5/webcomponents-react";
+
 import Search from "../../components/Search"
 import Filter from "../../components/Filter"
 import HouseRow from "../../components/HouseRow"
 import TableEntry from "../../components/TableEntry"
-import { Table } from "@ui5/webcomponents-react";
+import TableHeader from "../../components/TableHeader"
 
 import "./styles.css"
-import TableHeader from "../../components/TableHeader"
 
 const Results = () => {
 
@@ -20,11 +21,7 @@ const Results = () => {
         <HouseRow />
         <Table
           className="tableContainer"
-          columns={
-            <>
-              <TableHeader />
-            </>
-          }
+          columns={<TableHeader />}
         >
           <TableEntry />
         </Table>

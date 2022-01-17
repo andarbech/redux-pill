@@ -15,15 +15,32 @@ const reducer = (state = initialState, action) => {
     case SET_HOUSE_TYPE: {
       console.log(action.payload);
 
-      const previousType = state.filters.type;
+      return {
+        ...state,
+        filters: {
+          type: {
+            ...state.filters.type,
+            [action.payload.value]: action.payload.checked,
+          }
+        }
+      };
+    }
+    case SET_NUMBER_OF_BEDROOMS: {
+      console.log(action.payload);
 
       return {
         ...state,
         filters: {
-          type: [
-            ...previousType,
-            action.payload
-          ]
+          ...state.filters.bedrooms,
+          bedrooms: action.payload
+        }
+      };
+    }
+    case SET_NUMBER_OF_BATHROOMS: {
+      return {
+        ...state,
+        filters: {
+          bathrooms: action.payload
         }
       };
     }
