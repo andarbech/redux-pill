@@ -1,12 +1,19 @@
-// import Home from "./components/pages/home/Home";
-import Results from "./components/pages/Results";
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+import Home from "./pages/Home";
+import Results from "./pages/Results";
+import FilterPage from "./pages/FilterPage";
 
 function App() {
   return (
-    <div>
-      {/* <Home/> */}
-      <Results/>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/filter" element={<FilterPage />} />
+        <Route path='/results' element={<Results />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
