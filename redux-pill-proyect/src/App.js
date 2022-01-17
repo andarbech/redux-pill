@@ -1,7 +1,11 @@
+// import Home from "./components/pages/home/Home";
+import Results from "./components/pages/Results";
+
 function App() {
   return (
     <div>
-      <h1>Andreecito</h1>
+      {/* <Home/> */}
+      <Results/>
     </div>
   );
 }
