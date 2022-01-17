@@ -2,6 +2,7 @@ import "./styles.css"
 import { Navbar } from "react-bootstrap"
 import Search from "../../Search"
 import Filter from "../../Filter"
+import HouseRow from "../../HouseRow"
 const Results = () => {
     return (<>
 
@@ -28,7 +29,8 @@ const Results = () => {
             <div className="container">
                 <Search />
                 <div className="mt-5 " />
-                <Filter/>
+                <Filter />
+                <HouseRow/>
             </div>
             
         </main>
