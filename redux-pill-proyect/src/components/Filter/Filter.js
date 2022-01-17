@@ -6,7 +6,9 @@ import {
   setHouseType,
   setBedroomsNumber,
   setBathroomsNumber,
-  getAllProperties
+  getAllProperties,
+  setFilters,
+  filterProperties
 } from "../../redux/filter/actions";
 
 import "./styles.css";
@@ -15,7 +17,8 @@ const Filter = () => {
   const dispatch = useDispatch();
 
   const handleSetType = ({ target }) => {
-    dispatch(setHouseType(target.value, target.checked));
+    // dispatch(setHouseType(target.value, target.checked));
+    dispatch(setFilters(target.value, target.checked));
   };
 
   const handleSetBedrooms = ({ target }) => {
@@ -29,6 +32,7 @@ const Filter = () => {
 
   useEffect(() => {
     dispatch(getAllProperties());
+    dispatch(filterProperties('bath=3'));
   }, [])
 
   return (

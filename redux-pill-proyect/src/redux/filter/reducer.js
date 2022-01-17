@@ -8,7 +8,14 @@ import {
   SET_EQUIPMENT,
   SET_ADDITIONAL_FILTERS,
   SET_HOUSE_TYPE,
-  GET_FILTERED_PROPERTIES
+  GET_FILTERED_PROPERTIES,
+  LOADING_PROPERTIES,
+
+  GET_PROPIERTIES,
+  FILTER_PROPIERTIES,
+  CITY_PROPIERTIES,
+  RESET_PROPIERTIES,
+  SET_FILTERS,
 } from "./types";
 
 const reducer = (state = initialState, action) => {
@@ -54,6 +61,33 @@ const reducer = (state = initialState, action) => {
         }
       }
     }
+
+    case GET_PROPIERTIES: {
+      return {
+        ...state,
+        properties: {
+          ...state.properties,
+          properties: action.payload
+        }
+      }
+    }
+    case SET_FILTERS: {
+      return {
+        ...state,
+        filters: {
+          ...state.filters,
+          // value: action.payload
+          [action.payload.value]: action.payload.checked,
+        }
+      }
+    }
+    case LOADING_PROPERTIES: {
+      return {
+        ...state,
+        status: 'loading'
+      }
+    }
+
     default: {
       return state;
     }
