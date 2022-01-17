@@ -1,0 +1,15 @@
+// Strings for the names of the actions performed
+
+const HOUSE_TYPE = "HOUSE_TYPE";
+
+const HOUSE_STATE = "HOUSE_STATE";
+
+const NUMBER_OF_BEDROOMS = "NUMBER_OF_BEDROOMS";
+
+const NUMBER_OF_BATHROOMS = "NUMBER_OF_BATHROOMS";
+
+const PRICE_RANGE = "PRICE_RANGE";
+
+const PUBLICATION_DATE = "PUBLICATION_DATE";
+
+const EQUIPMENT = "EQUIPMENT";
