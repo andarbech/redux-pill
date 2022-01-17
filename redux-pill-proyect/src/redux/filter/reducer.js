@@ -8,13 +8,12 @@ import {
   SET_EQUIPMENT,
   SET_ADDITIONAL_FILTERS,
   SET_HOUSE_TYPE,
+  GET_FILTERED_PROPERTIES
 } from "./types";
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_HOUSE_TYPE: {
-      console.log(action.payload);
-
       return {
         ...state,
         filters: {
@@ -43,6 +42,17 @@ const reducer = (state = initialState, action) => {
           bathrooms: action.payload
         }
       };
+    }
+    case GET_FILTERED_PROPERTIES: {
+      console.log(action.payload);
+
+      return {
+        ...state,
+        properties: {
+          ...state.properties,
+          properties: action.payload
+        }
+      }
     }
     default: {
       return state;

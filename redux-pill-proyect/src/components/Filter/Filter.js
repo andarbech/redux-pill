@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { RangeSlider, Select, Option } from "@ui5/webcomponents-react";
 
 import {
   setHouseType,
   setBedroomsNumber,
-  setBathroomsNumber
+  setBathroomsNumber,
+  getAllProperties
 } from "../../redux/filter/actions";
 
 import "./styles.css";
@@ -25,6 +26,10 @@ const Filter = () => {
   const handleSetBathrooms = ({ target }) => {
     dispatch(setBathroomsNumber(target.value));
   };
+
+  useEffect(() => {
+    dispatch(getAllProperties());
+  }, [])
 
   return (
     <>
