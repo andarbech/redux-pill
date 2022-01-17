@@ -1,6 +1,14 @@
+import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { RangeSlider, Select, Option } from "@ui5/webcomponents-react";
+
+import { setHouseType } from "../../redux/filter/actions";
+
 import "./styles.css";
+
 const Filter = () => {
+  const dispatch = useDispatch();
+
   return (
     <>
       <form className="filters_form">
@@ -11,36 +19,48 @@ const Filter = () => {
               <input
                 value="House"
                 name="typeHouse"
-                type="radio"
+                type="checkbox"
                 id="HouseInput"
-              ></input>
+                onChange={({ target }) => {
+                  dispatch(setHouseType(target.value));
+                }}
+              />
               <label htmlFor="HouseInput">House</label>
             </div>
             <div>
               <input
                 value="Flat"
                 name="typeHouse"
-                type="radio"
+                type="checkbox"
                 id="flat"
-              ></input>
+                onChange={({ target }) => {
+                  dispatch(setHouseType(target.value));
+                }}
+              />
               <label htmlFor="flat">Flat/ apartament</label>
             </div>
             <div>
               <input
                 value="Penthouse"
                 name="typeHouse"
-                type="radio"
+                type="checkbox"
                 id="penthouse"
-              ></input>
+                onChange={({ target }) => {
+                  dispatch(setHouseType(target.value));
+                }}
+              />
               <label htmlFor="penthouse">Penthouse</label>
             </div>
             <div>
               <input
                 value="Duplex"
                 name="typeHouse"
-                type="radio"
+                type="checkbox"
                 id="duplex"
-              ></input>
+                onChange={({ target }) => {
+                  dispatch(setHouseType(target.value));
+                }}
+              />
               <label htmlFor="duplex">Duplex</label>
             </div>
           </div>
@@ -50,22 +70,22 @@ const Filter = () => {
           <h5>Bedrooms</h5>
           <div className="bedrooms">
             <label className="container">
-              <input value="0" name="bedroom" type="radio" id="studio"></input>
+              <input value="0" name="bedroom" type="checkbox" id="studio"></input>
               <span className="checkmark"> 0+</span>
             </label>
 
             <label className="container">
-              <input value="1" name="bedroom" type="radio" id="oneBed"></input>
+              <input value="1" name="bedroom" type="checkbox" id="oneBed"></input>
               <span className="checkmark">1</span>
             </label>
 
             <label className="container">
-              <input value="2" name="bedroom" type="radio" id="twoBed"></input>
+              <input value="2" name="bedroom" type="checkbox" id="twoBed"></input>
               <span className="checkmark">2</span>
             </label>
 
             <label className="container">
-              <input value="3" name="bedroom" type="radio" id="treeBed"></input>
+              <input value="3" name="bedroom" type="checkbox" id="treeBed"></input>
               <span className="checkmark">3</span>
             </label>
 
@@ -73,7 +93,7 @@ const Filter = () => {
               <input
                 value="4"
                 name="bedroom"
-                type="radio"
+                type="checkbox"
                 id="forOrMoreBed"
               ></input>
               <span className="checkmark"> 4+</span>
@@ -88,7 +108,7 @@ const Filter = () => {
               <input
                 value="1"
                 name="bathrooms"
-                type="radio"
+                type="checkbox"
                 id="oneBath"
               ></input>
               <span className="checkmark">1</span>
@@ -98,7 +118,7 @@ const Filter = () => {
               <input
                 value="2"
                 name="bathrooms"
-                type="radio"
+                type="checkbox"
                 id="twoBath"
               ></input>
               <span className="checkmark">2</span>
@@ -108,7 +128,7 @@ const Filter = () => {
               <input
                 value="3"
                 name="bathrooms"
-                type="radio"
+                type="checkbox"
                 id="threeOrMoreBath"
               ></input>
               <span className="checkmark">3+</span>
@@ -131,7 +151,7 @@ const Filter = () => {
               <input
                 value="Needs renovation"
                 name="house_State"
-                type="radio"
+                type="checkbox"
                 id="Needs_renovation"
               ></input>
               <label htmlFor="Needs_renovation">Needs renovation</label>
@@ -140,7 +160,7 @@ const Filter = () => {
               <input
                 value="New house"
                 name="house_State"
-                type="radio"
+                type="checkbox"
                 id="New_house"
               ></input>
               <label htmlFor="New_house">New House</label>
@@ -149,7 +169,7 @@ const Filter = () => {
               <input
                 value="Good condition"
                 name="house_State"
-                type="radio"
+                type="checkbox"
                 id="Good_condition"
               ></input>
               <label htmlFor="Good_condition">Good condition</label>
