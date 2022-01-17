@@ -21,8 +21,8 @@ import "@ui5/webcomponents/dist/features/InputElementsFormSupport.js";
 function Filters({ allProperties, filterState, filters, properties }) {
   const [text, setText] = useState("");
 
-  const dispatch = useDispatch();
-  const state = filterState;
+  // const dispatch = useDispatch();
+  // const state = filterState;
 
   const selectedBedRooms = [
     { id: 0, text: "0" },
