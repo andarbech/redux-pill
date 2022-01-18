@@ -19,17 +19,14 @@ const reducer = (state = initialState, action) => {
         ...state,
         properties: {
           ...state.properties,
-          properties: action.payload,
+          properties: [...action.payload],
         },
       };
     }
     case GET_PROPIERTIES: {
       return {
         ...state,
-        properties: {
-          ...state.properties,
-          properties: action.payload,
-        },
+        properties: action.payload,
       };
     }
     case SET_RANGE_FILTERS: {
