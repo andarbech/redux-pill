@@ -3,9 +3,6 @@ import propertiesApi from "../../api/properties";
 
 import {
   SET_HOUSE_STATE,
-  SET_HOUSE_TYPE,
-  SET_NUMBER_OF_BEDROOMS,
-  SET_NUMBER_OF_BATHROOMS,
   SET_PRICE_RANGE,
   SET_PUBLICATION_DATE,
   SET_EQUIPMENT,
@@ -17,7 +14,9 @@ import {
   FILTER_PROPIERTIES,
   CITY_PROPIERTIES,
   RESET_PROPIERTIES,
-  SET_FILTERS,
+  SET_RADIO_FILTERS,
+  SET_CHECKBOX_FILTERS,
+  SET_SELECT_FILTERS,
 } from "./types";
 
 export const getProperties = (value) => ({
@@ -38,13 +37,39 @@ export const getAllProperties = () => {
   }
 }
 
-export const setFilters = dataFilters => {
-  console.log('step 2:', dataFilters);
-
+export const setRadioFilters = dataFilter => {
   return (dispatch) => {
     dispatch({
-      type: SET_FILTERS,
-      payload: dataFilters,
+      type: SET_RADIO_FILTERS,
+      payload: {
+        name: dataFilter.name,
+        value: dataFilter.value
+      },
+    });
+  };
+};
+
+export const setCheckboxFilters = dataFilter => {
+  return (dispatch) => {
+    dispatch({
+      type: SET_CHECKBOX_FILTERS,
+      payload: {
+        name: dataFilter.name,
+        value: dataFilter.value,
+        checked: dataFilter.checked
+      },
+    });
+  };
+};
+
+export const setSelectFilters = dataFilter => {
+  return (dispatch) => {
+    dispatch({
+      type: SET_SELECT_FILTERS,
+      payload: {
+        name: dataFilter.name,
+        value: dataFilter.value,
+      },
     });
   };
 };
@@ -66,21 +91,6 @@ export const cityProperties = (value) => ({
 export const resetProperties = (value) => ({
   // type: RESET_PROPIERTIES,
   // payload: { value },
-});
-
-export const setHouseType = (value, checked) => ({
-  type: SET_HOUSE_TYPE,
-  payload: { value, checked },
-});
-
-export const setBedroomsNumber = (value) => ({
-  type: SET_NUMBER_OF_BEDROOMS,
-  payload: value,
-});
-
-export const setBathroomsNumber = (value) => ({
-  type: SET_NUMBER_OF_BATHROOMS,
-  payload: value,
 });
 
 export const getFilteredProperties = (value) => ({

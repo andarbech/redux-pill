@@ -7,8 +7,9 @@ const initialState = {
     bath: undefined,
     minPrice: undefined,
     maxPrice: undefined,
+    deposit: "zero",
     equipment: {},
-    additionalFilters: {},
+    moreFilters: {},
   },
 };
 
