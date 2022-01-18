@@ -1,5 +1,6 @@
 // import getData from '../../services/data';
-import propertiesApi from "../../api/properties";
+import propertiesApi  from "../../api/properties";
+
 
 import {
   SET_HOUSE_STATE,
@@ -97,3 +98,12 @@ export const getFilteredProperties = (value) => ({
 //     dispatch(getFilteredProperties(data));
 //   }
 // }
+
+export const filterCity = (query) => {
+  return async (dispatch) => {
+    dispatch(loadingProperties());
+    const { data } = await propertiesApi.filterCityProperties(query);
+    console.log('cityProperties', data);
+    // dispatch(filterProperties(data));
+  }
+};
