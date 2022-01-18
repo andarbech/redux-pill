@@ -17,26 +17,32 @@ const Filter = () => {
   const dispatch = useDispatch();
 
   const handleChangeRadio = ({ target }) => {
-    dispatch(setRadioFilters({
-      name: target.name,
-      value: target.value,
-    }));
-  }
+    dispatch(
+      setRadioFilters({
+        name: target.name,
+        value: target.value,
+      })
+    );
+  };
 
   const handleChangeCheckbox = ({ target }) => {
-    dispatch(setCheckboxFilters({
-      name: target.name,
-      value: target.value,
-      checked: target.checked
-    }));
-  }
+    dispatch(
+      setCheckboxFilters({
+        name: target.name,
+        value: target.value,
+        checked: target.checked,
+      })
+    );
+  };
 
   const handleChangeSelect = ({ target }) => {
-    dispatch(setSelectFilters({
-      name: target.name,
-      value: target.selectedOption.value,
-    }));
-  }
+    dispatch(
+      setSelectFilters({
+        name: target.name,
+        value: target.selectedOption.value,
+      })
+    );
+  };
 
   const handleChangeRangeSilder = ({ target }) => {
     dispatch(setRangeFilters({
@@ -50,7 +56,7 @@ const Filter = () => {
     // stateFilters = useSelector((state) => state.filter.filters);
     dispatch(getAllProperties());
     // dispatch(filterProperties('bath=3'));
-  }, [])
+  }, []);
 
   return (
     <>
@@ -200,23 +206,13 @@ const Filter = () => {
         </div>
         <div>
           <h5>Type of Deposit</h5>
-          <Select
-            name="deposit"
-            id="deposit"
-            onChange={handleChangeSelect}
-          >
+          <Select name="deposit" id="deposit" onChange={handleChangeSelect}>
             <Option selected="selected" value="zero">
               None
             </Option>
-            <Option value="one_month">
-              One month
-            </Option>
-            <Option value="two_months">
-              Two months
-            </Option>
-            <Option value="three_months">
-              Three months
-            </Option>
+            <Option value="one_month">One month</Option>
+            <Option value="two_months">Two months</Option>
+            <Option value="three_months">Three months</Option>
           </Select>
         </div>
         <div>
@@ -275,16 +271,25 @@ const Filter = () => {
             id="publication_date"
             onChange={handleChangeSelect}
           >
-            <Option selected="selected" value="last_48_hours">
+            <Option selected="selected">Select Publication Date</Option>
+            <Option
+              value={new Date(new Date().setHours(new Date().getHours() - 48))}
+            >
               last 48 hours
             </Option>
-            <Option value="last_36_hours">
+            <Option
+              value={new Date(new Date().setHours(new Date().getHours() - 36))}
+            >
               last 36 hours
             </Option>
-            <Option value="last_24_hours">
+            <Option
+              value={new Date(new Date().setHours(new Date().getHours() - 24))}
+            >
               last 24 hours
             </Option>
-            <Option value="last_12_hours">
+            <Option
+              value={new Date(new Date().setHours(new Date().getHours() - 12))}
+            >
               last 12 hours
             </Option>
           </Select>
@@ -310,7 +315,9 @@ const Filter = () => {
                 id="more_filters_air_conditioning"
                 onChangeCapture={handleChangeCheckbox}
               />
-              <label htmlFor="more_filters_air_conditioning">Air Conditioning</label>
+              <label htmlFor="more_filters_air_conditioning">
+                Air Conditioning
+              </label>
             </div>
             <div>
               <input

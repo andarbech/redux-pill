@@ -19,18 +19,18 @@ const reducer = (state = initialState, action) => {
         ...state,
         properties: {
           ...state.properties,
-          properties: action.payload
-        }
-      }
+          properties: action.payload,
+        },
+      };
     }
     case GET_PROPIERTIES: {
       return {
         ...state,
         properties: {
           ...state.properties,
-          properties: action.payload
-        }
-      }
+          properties: action.payload,
+        },
+      };
     }
     case SET_RANGE_FILTERS: {
       return {
@@ -52,8 +52,8 @@ const reducer = (state = initialState, action) => {
         filters: {
           ...state.filters,
           [action.payload.name]: action.payload.value,
-        }
-      }
+        },
+      };
     }
     case SET_CHECKBOX_FILTERS: {
       return {
@@ -64,14 +64,14 @@ const reducer = (state = initialState, action) => {
             ...state.filters[action.payload.name],
             [action.payload.value]: action.payload.checked,
           },
-        }
-      }
+        },
+      };
     }
     case LOADING_PROPERTIES: {
       return {
         ...state,
-        status: 'loading'
-      }
+        status: "loading",
+      };
     }
     default: {
       return state;
