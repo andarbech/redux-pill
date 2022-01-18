@@ -17,7 +17,7 @@ const Filter = () => {
   const dispatch = useDispatch();
   let stateFilters = useSelector((state) => state.filter.filters);
 
-  // const [counterInput, setCounterInput] = useState('');
+  // const [counterInput, setCounterInput] = xºxºuseState('');
   // const data = stateFilters;
   // console.log(data);
 
@@ -58,7 +58,7 @@ const Filter = () => {
 
   useEffect(() => {
     // stateFilters = useSelector((state) => state.filter.filters);
-    dispatch(getAllProperties());
+    //dispatch(getAllProperties());
     // dispatch(filterProperties('bath=3'));
   }, [])
 

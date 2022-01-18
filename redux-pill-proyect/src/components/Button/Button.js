@@ -2,7 +2,7 @@ import React from "react";
 import "./Button.css";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { filterCity } from "../../redux/filter/actions";
+import { getAllProperties } from "../../redux/filter/actions";
 
 const STYLES = ["btn--primary", "btn--outline"];
 
@@ -18,7 +18,7 @@ const dispatch=useDispatch()
     <Link to="/results" className="btn-mobile">
       <button
         className={`btn ${checkButtonStyle} ${checkButtonSize}`}
-        onClick={()=>dispatch(filterCity(city))}
+        onClick={()=>dispatch(getAllProperties(city))}
         type={type}
       >
         {children}

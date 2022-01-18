@@ -64,15 +64,15 @@ const reducer = (state = initialState, action) => {
       }
     }
 
-    case GET_PROPIERTIES: {
+    case GET_PROPIERTIES: 
+
+      console.log(action.payload)
       return {
         ...state,
-        properties: {
-          ...state.properties,
-          properties: action.payload
-        }
+        properties: 
+       action.payload
       }
-    }
+    
     case SET_FILTERS: {
       console.log('step 3:', state)
       // console.log('step 3:', action.payload);
