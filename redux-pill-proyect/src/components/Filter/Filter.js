@@ -7,7 +7,8 @@ import {
   setRadioFilters,
   filterProperties,
   setCheckboxFilters,
-  setSelectFilters
+  setSelectFilters,
+  setRangeFilters,
 } from "../../redux/filter/actions";
 
 import "./styles.css";
@@ -34,6 +35,14 @@ const Filter = () => {
     dispatch(setSelectFilters({
       name: target.name,
       value: target.selectedOption.value,
+    }));
+  }
+
+  const handleChangeRangeSilder = ({ target }) => {
+    dispatch(setRangeFilters({
+      name: target.className,
+      startValue: target.startValue,
+      endValue: target.endValue,
     }));
   }
 
@@ -249,12 +258,14 @@ const Filter = () => {
         <div>
           <h5>Price Range</h5>
           <RangeSlider
+            className="price"
             endValue="150000"
             startValue="500"
             showTooltip="true"
             max="300000"
             min="500"
             step="4.000"
+            onChange={handleChangeRangeSilder}
           />
         </div>
         <div>

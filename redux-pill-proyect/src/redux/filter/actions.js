@@ -1,16 +1,8 @@
-// import getData from '../../services/data';
-import propertiesApi  from "../../api/properties";
-
+import propertiesApi from "../../api/properties";
 
 import {
-  SET_HOUSE_STATE,
-  SET_PRICE_RANGE,
-  SET_PUBLICATION_DATE,
-  SET_EQUIPMENT,
-  SET_ADDITIONAL_FILTERS,
   GET_FILTERED_PROPERTIES,
   LOADING_PROPERTIES,
-
   GET_PROPIERTIES,
   FILTER_PROPIERTIES,
   CITY_PROPIERTIES,
@@ -18,6 +10,7 @@ import {
   SET_RADIO_FILTERS,
   SET_CHECKBOX_FILTERS,
   SET_SELECT_FILTERS,
+  SET_RANGE_FILTERS
 } from "./types";
 
 export const getProperties = (value) => ({
@@ -70,6 +63,19 @@ export const setSelectFilters = dataFilter => {
       payload: {
         name: dataFilter.name,
         value: dataFilter.value,
+      },
+    });
+  };
+};
+
+export const setRangeFilters = dataFilter => {
+  return (dispatch) => {
+    dispatch({
+      type: SET_RANGE_FILTERS,
+      payload: {
+        name: dataFilter.name,
+        startValue: dataFilter.startValue,
+        endValue: dataFilter.endValue,
       },
     });
   };

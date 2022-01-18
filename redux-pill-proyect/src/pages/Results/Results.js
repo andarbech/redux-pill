@@ -2,7 +2,6 @@ import { Table } from "@ui5/webcomponents-react";
 
 import Search from "../../components/Search"
 import Filter from "../../components/Filter"
-import HouseRow from "../../components/HouseRow"
 import TableEntry from "../../components/TableEntry"
 import TableHeader from "../../components/TableHeader"
 
@@ -18,7 +17,6 @@ const Results = () => {
         <Search />
         <div className="mt-5 " />
         <Filter />
-        <HouseRow />
         <Table
           className="tableContainer"
           columns={<TableHeader />}

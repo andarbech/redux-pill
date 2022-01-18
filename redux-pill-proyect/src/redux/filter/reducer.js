@@ -1,13 +1,7 @@
 import initialState from "./state";
 import {
-  SET_HOUSE_STATE,
-  SET_PRICE_RANGE,
-  SET_PUBLICATION_DATE,
-  SET_EQUIPMENT,
-  SET_ADDITIONAL_FILTERS,
   GET_FILTERED_PROPERTIES,
   LOADING_PROPERTIES,
-
   GET_PROPIERTIES,
   FILTER_PROPIERTIES,
   CITY_PROPIERTIES,
@@ -15,13 +9,12 @@ import {
   SET_RADIO_FILTERS,
   SET_CHECKBOX_FILTERS,
   SET_SELECT_FILTERS,
+  SET_RANGE_FILTERS,
 } from "./types";
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_FILTERED_PROPERTIES: {
-      // console.log(action.payload);
-
       return {
         ...state,
         properties: {
@@ -30,7 +23,6 @@ const reducer = (state = initialState, action) => {
         }
       }
     }
-
     case GET_PROPIERTIES: {
       return {
         ...state,
@@ -40,10 +32,21 @@ const reducer = (state = initialState, action) => {
         }
       }
     }
+    case SET_RANGE_FILTERS: {
+      return {
+        ...state,
+        filters: {
+          ...state.filters,
+          [action.payload.name]: {
+            ...state.filters[action.payload.name],
+            startValue: action.payload.startValue,
+            endValue: action.payload.endValue,
+          },
+        }
+      }
+    }
     case SET_SELECT_FILTERS:
     case SET_RADIO_FILTERS: {
-      console.log(action.payload);
-
       return {
         ...state,
         filters: {
@@ -53,9 +56,6 @@ const reducer = (state = initialState, action) => {
       }
     }
     case SET_CHECKBOX_FILTERS: {
-      console.log(action.payload);
-      console.log(state.filters[action.payload.name])
-
       return {
         ...state,
         filters: {
@@ -73,7 +73,6 @@ const reducer = (state = initialState, action) => {
         status: 'loading'
       }
     }
-
     default: {
       return state;
     }
