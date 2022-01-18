@@ -26,6 +26,7 @@ const reducer = (state = initialState, action) => {
     case GET_PROPIERTIES: {
       return {
         ...state,
+        status: 'ok',
         properties: action.payload,
       };
     }

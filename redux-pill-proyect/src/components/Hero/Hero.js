@@ -4,6 +4,11 @@ import "./Hero.css";
 
 function Hero() {
   const [city, setcity] = useState('');
+
+  const handleChangeInput = ({ target }) => {
+    setcity(target.value)
+  };
+
   return (
     <div className="hero-container">
       <h2>Here You will find THE best deals on your favorite houses</h2>
@@ -12,8 +17,8 @@ function Hero() {
       <input className="form-control mt-2"
         type="text"
         placeholder="Enter city"
-        onChange={(e)=>{setcity(e.target.value)}}
-/>
+        onChange={handleChangeInput}
+      />
       <div className="hero-btns">
         <Button
           className="btns"

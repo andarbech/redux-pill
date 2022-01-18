@@ -1,10 +1,19 @@
 import Search from "../../components/Search"
-import Filter from "../../components/Filter"
+import FiltersForm from "../../components/FiltersForm"
 import Properties from "../../components/Properties"
+
+import { useEffect } from 'react'
+import { useSelector, useDispatch } from "react-redux";
+
+import {
+  getAllProperties,
+} from "../../redux/filter/actions";
 
 import "./styles.css"
 
 const Results = () => {
+  const { filters, properties, status } = useSelector((state) => state.filter);
+
   return (
     <>
       <header className="header">
@@ -12,8 +21,8 @@ const Results = () => {
       <main className="main">
         <Search />
         <div className="mt-5 " />
-        <Filter />
-        <Properties />
+        <FiltersForm filters={filters} />
+        <Properties properties={properties} />
       </main>
     </>
   )

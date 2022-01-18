@@ -2,18 +2,16 @@ import { useEffect } from 'react'
 import { useSelector, useDispatch } from "react-redux";
 import { Table } from "@ui5/webcomponents-react";
 
-// import {
-//   getAllProperties,
-// } from "../../redux/filter/actions";
+import {
+  getAllProperties,
+} from "../../redux/filter/actions";
 import TableEntry from "../TableEntry"
 import TableHeader from "../TableHeader"
 
 const Properties = () => {
-  const { properties } = useSelector((state) => state.filter);
+  const { filters, properties, status } = useSelector((state) => state.filter);
 
-  console.log(properties);
-
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   // useEffect(() => {
   //   dispatch(getAllProperties());
@@ -28,6 +26,13 @@ const Properties = () => {
       onRowClick={function noRefCheck() { }}
       onSelectionChange={function noRefCheck() { }}
     >
+      {status == "loading"
+        && <span>loading</span>
+      }
+      {(properties == [])
+        ? dispatch
+        : null
+      }
       {properties.length > 0
         && properties.map((property) => (
           <TableEntry
