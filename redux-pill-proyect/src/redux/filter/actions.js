@@ -38,11 +38,13 @@ export const getAllProperties = () => {
   }
 }
 
-export const setFilters = (value, checked) => {
+export const setFilters = dataFilters => {
+  console.log('step 2:', dataFilters);
+
   return (dispatch) => {
     dispatch({
       type: SET_FILTERS,
-      payload: { value, checked },
+      payload: dataFilters,
     });
   };
 };

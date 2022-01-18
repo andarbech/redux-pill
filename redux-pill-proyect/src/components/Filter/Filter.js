@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RangeSlider, Select, Option } from "@ui5/webcomponents-react";
 
 import {
@@ -15,11 +15,37 @@ import "./styles.css";
 
 const Filter = () => {
   const dispatch = useDispatch();
+  let stateFilters = useSelector((state) => state.filter.filters);
+
+  // const [counterInput, setCounterInput] = useState('');
+  // const data = stateFilters;
+  // console.log(data);
 
   const handleSetType = ({ target }) => {
     // dispatch(setHouseType(target.value, target.checked));
     dispatch(setFilters(target.value, target.checked));
   };
+
+  const handleChangeInput = ({ target }) => {
+    // console.log(stateFilters, target);
+
+    dispatch(setFilters({
+      // ...stateFilters,
+      [target.name]: target.value,
+    }));
+  }
+
+  // const handleChangeInput = ({ target }) => {
+  //   console.log(stateFilters, target);
+
+  //   dispatch(setFilters({
+  //     ...stateFilters,
+  //     [target.name]: {
+  //       ...stateFilters[target.name],
+  //       [target.value]: target.checked,
+  //     }
+  //   }));
+  // }
 
   const handleSetBedrooms = ({ target }) => {
     console.log(target.value)
@@ -31,8 +57,9 @@ const Filter = () => {
   };
 
   useEffect(() => {
+    // stateFilters = useSelector((state) => state.filter.filters);
     dispatch(getAllProperties());
-    dispatch(filterProperties('bath=3'));
+    // dispatch(filterProperties('bath=3'));
   }, [])
 
   return (
@@ -44,40 +71,40 @@ const Filter = () => {
             <div>
               <input
                 value="house"
-                name="house"
-                type="checkbox"
+                name="type"
+                type="radio"
                 id="HouseInput"
-                onChangeCapture={handleSetType}
+                onChangeCapture={handleChangeInput}
               />
               <label htmlFor="HouseInput">House</label>
             </div>
             <div>
               <input
-                value="flat"
-                name="flat"
-                type="checkbox"
+                value="flat/apartment"
+                name="type"
+                type="radio"
                 id="flat"
-                onChangeCapture={handleSetType}
+                onChangeCapture={handleChangeInput}
               />
               <label htmlFor="flat">Flat/ apartament</label>
             </div>
             <div>
               <input
                 value="penthouse"
-                name="penthouse"
-                type="checkbox"
+                name="type"
+                type="radio"
                 id="penthouse"
-                onChangeCapture={handleSetType}
+                onChangeCapture={handleChangeInput}
               />
               <label htmlFor="penthouse">Penthouse</label>
             </div>
             <div>
               <input
                 value="duplex"
-                name="duplex"
-                type="checkbox"
+                name="type"
+                type="radio"
                 id="duplex"
-                onChangeCapture={handleSetType}
+                onChangeCapture={handleChangeInput}
               />
               <label htmlFor="duplex">Duplex</label>
             </div>
@@ -90,10 +117,10 @@ const Filter = () => {
             <label className="container">
               <input
                 value="0"
-                name="bedroom"
-                type="checkbox"
+                name="bed"
+                type="radio"
                 id="studio"
-                onChangeCapture={handleSetBedrooms}
+                onChangeCapture={handleChangeInput}
               />
               <span className="checkmark"> 0+</span>
             </label>
@@ -101,10 +128,10 @@ const Filter = () => {
             <label className="container">
               <input
                 value="1"
-                name="bedroom"
-                type="checkbox"
+                name="bed"
+                type="radio"
                 id="oneBed"
-                onChangeCapture={handleSetBedrooms}
+                onChangeCapture={handleChangeInput}
               />
               <span className="checkmark">1</span>
             </label>
@@ -112,10 +139,10 @@ const Filter = () => {
             <label className="container">
               <input
                 value="2"
-                name="bedroom"
-                type="checkbox"
+                name="bed"
+                type="radio"
                 id="twoBed"
-                onChangeCapture={handleSetBedrooms}
+                onChangeCapture={handleChangeInput}
               />
               <span className="checkmark">2</span>
             </label>
@@ -123,10 +150,10 @@ const Filter = () => {
             <label className="container">
               <input
                 value="3"
-                name="bedroom"
-                type="checkbox"
+                name="bed"
+                type="radio"
                 id="treeBed"
-                onChangeCapture={handleSetBedrooms}
+                onChangeCapture={handleChangeInput}
               />
               <span className="checkmark">3</span>
             </label>
@@ -134,10 +161,10 @@ const Filter = () => {
             <label className="container">
               <input
                 value="4"
-                name="bedroom"
-                type="checkbox"
-                id="forOrMoreBed"
-                onChangeCapture={handleSetBedrooms}
+                name="bed"
+                type="radio"
+                id="fourOrMoreBed"
+                onChangeCapture={handleChangeInput}
               />
               <span className="checkmark"> 4+</span>
             </label>
@@ -150,9 +177,10 @@ const Filter = () => {
             <label className="container">
               <input
                 value="1"
-                name="bathrooms"
-                type="checkbox"
+                name="bath"
+                type="radio"
                 id="oneBath"
+                onChangeCapture={handleChangeInput}
               />
               <span className="checkmark">1</span>
             </label>
@@ -160,9 +188,10 @@ const Filter = () => {
             <label className="container">
               <input
                 value="2"
-                name="bathrooms"
-                type="checkbox"
+                name="bath"
+                type="radio"
                 id="twoBath"
+                onChangeCapture={handleChangeInput}
               />
               <span className="checkmark">2</span>
             </label>
@@ -170,9 +199,10 @@ const Filter = () => {
             <label className="container">
               <input
                 value="3"
-                name="bathrooms"
-                type="checkbox"
+                name="bath"
+                type="radio"
                 id="threeOrMoreBath"
+                onChangeCapture={handleChangeInput}
               />
               <span className="checkmark">3+</span>
             </label>

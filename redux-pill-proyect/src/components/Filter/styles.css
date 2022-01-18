@@ -9,14 +9,12 @@
 .typeHouse {
   margin: 5%;
   display: grid;
-  /*grid-template-columns: 0.5fr 0.5fr;*/
   font-size: 15px;
   width: 100%;
 }
 .houseState {
   margin: 5%;
   display: grid;
-  /* grid-template-columns: 0.5fr 0.5fr; */
   font-size: 15px;
   width: 100%;
 }
@@ -34,9 +32,7 @@
   display: grid;
   font-size: 15px;
 }
-/* input{
-    margin-bottom: 20px;
-  } */
+
 .container {
   display: block;
   position: relative;

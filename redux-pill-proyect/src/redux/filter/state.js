@@ -1,19 +1,14 @@
 const initialState = {
-  properties: [],
+  properties: {},
   filters: {
-    type: {
-      house: false,
-      flat: false,
-      penthouse: false,
-      duplex: false
-    },
-    state: [],
-    bedrooms: null,
-    bathrooms: null,
-    min_price: null,
-    max_price: null,
-    equipment: [],
-    additional_filters: [],
+    type: undefined,
+    conditions: {},
+    bed: undefined,
+    bath: undefined,
+    minPrice: undefined,
+    maxPrice: undefined,
+    equipment: {},
+    additionalFilters: {},
   },
 };
 
