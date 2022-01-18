@@ -7,7 +7,6 @@ import {
   SET_ADDITIONAL_FILTERS,
   GET_FILTERED_PROPERTIES,
   LOADING_PROPERTIES,
-
   GET_PROPIERTIES,
   FILTER_PROPIERTIES,
   CITY_PROPIERTIES,
@@ -26,9 +25,9 @@ const reducer = (state = initialState, action) => {
         ...state,
         properties: {
           ...state.properties,
-          properties: action.payload
-        }
-      }
+          properties: action.payload,
+        },
+      };
     }
 
     case GET_PROPIERTIES: {
@@ -36,9 +35,9 @@ const reducer = (state = initialState, action) => {
         ...state,
         properties: {
           ...state.properties,
-          properties: action.payload
-        }
-      }
+          properties: action.payload,
+        },
+      };
     }
     case SET_SELECT_FILTERS:
     case SET_RADIO_FILTERS: {
@@ -49,12 +48,11 @@ const reducer = (state = initialState, action) => {
         filters: {
           ...state.filters,
           [action.payload.name]: action.payload.value,
-        }
-      }
+        },
+      };
     }
     case SET_CHECKBOX_FILTERS: {
       console.log(action.payload);
-      console.log(state.filters[action.payload.name])
 
       return {
         ...state,
@@ -64,14 +62,14 @@ const reducer = (state = initialState, action) => {
             ...state.filters[action.payload.name],
             [action.payload.value]: action.payload.checked,
           },
-        }
-      }
+        },
+      };
     }
     case LOADING_PROPERTIES: {
       return {
         ...state,
-        status: 'loading'
-      }
+        status: "loading",
+      };
     }
 
     default: {
