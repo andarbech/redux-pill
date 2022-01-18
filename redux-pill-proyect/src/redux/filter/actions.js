@@ -22,11 +22,12 @@ export const loadingProperties = () => ({
   type: LOADING_PROPERTIES
 })
 
-export const getAllProperties = () => {
-  return async (dispatch) => {
+export const getAllProperties = (city = "") => {
+
+   return async (dispatch) => {
     dispatch(loadingProperties());
-    const { data } = await propertiesApi.getProperties();
-    console.log('getAllProperties', data);
+    const { data } = await propertiesApi.filterProperties(city);
+    
     dispatch(getProperties(data));
   }
 }
@@ -81,14 +82,14 @@ export const setRangeFilters = dataFilter => {
   };
 };
 
-export const filterProperties = (query) => {
-  return async (dispatch) => {
-    dispatch(loadingProperties());
-    const { data } = await propertiesApi.filterProperties(query);
-    console.log('filterProperties', data);
-    // dispatch(filterProperties(data));
-  }
-};
+// export const filterProperties = (query) => {
+//   return async (dispatch) => {
+//     dispatch(loadingProperties());
+//     const { data } = await propertiesApi.filterProperties(query);
+//     console.log('filterProperties', data);
+//     // dispatch(filterProperties(data));
+//   }
+// };
 
 export const cityProperties = (value) => ({
   // type: CITY_PROPIERTIES,
@@ -115,11 +116,11 @@ export const getFilteredProperties = (value) => ({
 //   }
 // }
 
-export const filterCity = (query) => {
-  return async (dispatch) => {
-    dispatch(loadingProperties());
-    const { data } = await propertiesApi.filterCityProperties(query);
-    console.log('cityProperties', data);
-    // dispatch(filterProperties(data));
-  }
-};
+// export const filterCity = (query) => {
+//   return async (dispatch) => {
+//     dispatch(loadingProperties());
+//     const { data } = await propertiesApi.filterCityProperties(query);
+//     console.log('cityProperties', data);
+//     // dispatch(filterProperties(data));
+//   }
+// };

@@ -48,21 +48,25 @@
       "air_conditioning": true,
       "swimming_pool": false,
       "terrace": true,
-      "publication_date": "Mon Jan 17 2022 15:31:42 GMT+0100 (Central European Standard Time)"
+      "publication_date": "2020/12/01 01:01:01",
+      "image": {
+        "imageURL": "https://img3.idealista.com/blur/WEB_DETAIL_TOP-L-L/0/id.pro.es.image.master/4d/25/48/925357675.jpg",
+        "alt": "idealista"
+      }
     },
     {
       "id": 2,
       "street": "dsadasds",
       "number": 10,
       "city": "asdasdasd",
-      "province": "Barcelona",
+      "province": "Tarragona",
       "country": "Spain",
       "status": "available",
       "type": "flat/apartment",
       "description": "This is the description of the property",
       "contact_mail": "pepito@assemblerschool.com",
       "contact_phone": "+344767574657",
-      "condition": "good",
+      "condition": "new",
       "room": 5,
       "bath": 3,
       "size": 200,
@@ -72,7 +76,11 @@
       "air_conditioning": true,
       "swimming_pool": false,
       "terrace": true,
-      "publication_date": "Sun Jan 16 2022 15:31:42 GMT+0100 (Central European Standard Time)"
+      "publication_date": "2020/12/01 01:01:01",
+      "image": {
+        "imageURL": "https://img3.idealista.com/blur/WEB_DETAIL_TOP-L-L/0/id.pro.es.image.master/d5/d4/ee/925798634.jpg",
+        "alt": "idealista"
+      }
     }
   ],
   "favorite": [

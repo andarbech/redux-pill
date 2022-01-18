@@ -53,7 +53,8 @@ const Filter = () => {
   }
 
   useEffect(() => {
-    dispatch(getAllProperties());
+    // stateFilters = useSelector((state) => state.filter.filters);
+    // dispatch(getAllProperties());
     // dispatch(filterProperties('bath=3'));
   }, []);
 

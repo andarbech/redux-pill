@@ -1,12 +1,11 @@
 import React from "react";
 import { TableCell, TableRow, Label, Badge } from "@ui5/webcomponents-react";
 
-const TableEntry = (item) => {
-  console.log(item)
+const TableEntry = ({ item }) => {
   return (
     <TableRow>
       <TableCell>
-        <img src={item.imageURL} alt={item.title} />
+        <img src={item.image.imageURL} alt={item.image.alt} />
       </TableCell>
       <TableCell>
         <Label className="address">
