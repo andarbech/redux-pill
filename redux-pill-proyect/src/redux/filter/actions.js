@@ -66,15 +66,12 @@ export const setRadioFiltersMiddleware = (dataFilter) => {
       const data = []
       
       dataFilter.filter.forEach(property => {
-
-        const propName = dataFilter.name;
-        
-          console.log( dataFilter.name)
-          console.log(dataFilter.value )
-          console.log(property.propName)
-        
+     
+        if (dataFilter.value == property[`${dataFilter.name}`]) {
+          data.push(property)
+          }
       });
-      // dispatch(setRadioFilters(data));
+       dispatch(setRadioFilters(data));
     }
   }
 

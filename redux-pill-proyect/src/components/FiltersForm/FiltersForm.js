@@ -18,7 +18,7 @@ const Filter = () => {
   const dispatch = useDispatch();
   const { filteredProperties } = useSelector((state => state.filter))
   
-  console.log(filteredProperties)
+
 
   const handleChangeRadio = ({ target }) => {
     dispatch(
