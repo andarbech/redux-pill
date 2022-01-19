@@ -45,8 +45,13 @@ const reducer = (state = initialState, action) => {
     }
     case SET_SELECT_FILTERS:
     case SET_RADIO_FILTERS: {
+      
       return {
         ...state,
+        filteredProperties: [
+          ...action.payload
+        ],
+        status: 'ok',
         filters: {
           ...state.filters,
           [action.payload.name]: action.payload.value,

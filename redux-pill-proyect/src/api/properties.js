@@ -21,6 +21,7 @@ const getPropertiesByFilter = (query, baseUrl = client.baseUrl) => {
   return http.get(`${baseUrl}/properties?${query}`);
 };
 
+
 const propertiesApi = {
   getAllProperties,
   getProperties,

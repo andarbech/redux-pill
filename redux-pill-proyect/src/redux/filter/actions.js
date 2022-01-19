@@ -38,17 +38,48 @@ export const getAllProperties = (query) => {
   }
 }
 
-export const setRadioFilters = dataFilter => {
+export const setRadioFilters = (data) => {
   return (dispatch) => {
     dispatch({
       type: SET_RADIO_FILTERS,
-      payload: {
-        name: dataFilter.name,
-        value: dataFilter.value
-      },
+      payload:data
     });
   };
 };
+
+export const setRadioFiltersMiddleware = (dataFilter) => {
+  
+  if (dataFilter.filter.length <= 0) {
+    const query = `${dataFilter.name}=${dataFilter.value}`
+ 
+    return async (dispatch) => {
+      dispatch(loadingProperties());
+      const { data } = await propertiesApi.getPropertiesByFilter(query);
+  
+      dispatch(setRadioFilters(data));
+    }
+  } else {
+    // const query = `${dataFilter.name}=${dataFilter.value}`
+    return (dispatch) => {
+      dispatch(loadingProperties());
+
+      const data = []
+      
+      dataFilter.filter.forEach(property => {
+
+        const propName = dataFilter.name;
+        
+          console.log( dataFilter.name)
+          console.log(dataFilter.value )
+          console.log(property.propName)
+        
+      });
+      // dispatch(setRadioFilters(data));
+    }
+  }
+
+
+}
 
 export const setCheckboxFilters = dataFilter => {
   return (dispatch) => {

@@ -1,5 +1,6 @@
 const initialState = {
   properties: [],
+   filteredProperties:[],
   filters: {
     type: undefined,
     conditions: {},

@@ -9,18 +9,23 @@ import {
   setCheckboxFilters,
   setSelectFilters,
   setRangeFilters,
+  setRadioFiltersMiddleware
 } from "../../redux/filter/actions";
 
 import "./styles.css";
 
 const Filter = () => {
   const dispatch = useDispatch();
+  const { filteredProperties } = useSelector((state => state.filter))
+  
+  console.log(filteredProperties)
 
   const handleChangeRadio = ({ target }) => {
     dispatch(
-      setRadioFilters({
+      setRadioFiltersMiddleware({
         name: target.name,
         value: target.value,
+        filter:filteredProperties
       })
     );
   };
