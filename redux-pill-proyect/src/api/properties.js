@@ -28,7 +28,6 @@ const createNewUser = (query) => {
 };
 
 const loginUser = (query) => {
-  console.log(query);
   return http.post(
     `http://localhost:8100/api/login?email=${query.email}&password=${query.password}`
   );

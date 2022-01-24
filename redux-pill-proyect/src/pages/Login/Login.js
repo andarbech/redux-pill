@@ -2,7 +2,8 @@ import "./styleL.css";
 import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
-import { sendData } from "../../redux/users/actions";
+import { setLoginUser } from "../../redux/users/actions";
+import propertiesApi from "api/properties";
 
 const Login = () => {
   const [userData, setUserData] = useState({});
@@ -14,10 +15,14 @@ const Login = () => {
       [e.target.name]: e.target.value,
     });
   };
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log("submit");
-    dispatch(sendData(userData));
+    try {
+      const { data } = await propertiesApi.loginUser(userData);
+      if (data.sucess) setLoginUser(data.data);
+    } catch (error) {
+      console.log("Email or Password Incorrect");
+    }
   };
 
   return (
