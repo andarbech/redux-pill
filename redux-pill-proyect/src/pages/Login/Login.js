@@ -1,24 +1,24 @@
 import "./styleL.css";
 import { NavLink } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { sendData } from "../../redux/users/actions";
 
 const Login = () => {
-    const dispatch = useDispatch();
-    const [userData, setUserData] = useState({});
-    const sessionState = useSelector((state) => state.user);
+  const [userData, setUserData] = useState({});
+  const dispatch = useDispatch();
 
-    const handleChange = (e) => {
-        setUserData({
-            ...userData,
-            [e.target.name]: e.target.value,
-        });
-    };
-    const handleSubmit = (event) => {
-        event.preventDefault();
-      
-        (sendData(userData)
+  const handleChange = (e) => {
+    setUserData({
+      ...userData,
+      [e.target.name]: e.target.value,
+    });
+  };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log("submit");
+    dispatch(sendData(userData));
+  };
 
   return (
     <div>
@@ -54,7 +54,7 @@ const Login = () => {
             <h5>or</h5>
             <NavLink
               exact
-              to="/register"
+              to="/sign-up"
               style={{ textDecoration: "none" }}
               className="login"
             >

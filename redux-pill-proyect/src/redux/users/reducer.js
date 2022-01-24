@@ -1,5 +1,5 @@
 import initialState from "./state";
-import { LOGGED_USER, CREATE_NEW_USER } from "./types";
+import { LOGGED_USER } from "./types";
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -11,7 +11,6 @@ const reducer = (state = initialState, action) => {
         userEmail: action.payload.email,
       };
 
-    case CREATE_NEW_USER:
     default: {
       return state;
     }

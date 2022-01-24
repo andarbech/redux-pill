@@ -1,6 +1,6 @@
 import propertiesApi from "../../api/properties";
 
-import { LOGGED_USER, CREATE_NEW_USER } from "./types";
+import { LOGGED_USER } from "./types";
 
 export const setLoginUser = (value) => ({
   type: LOGGED_USER,
@@ -13,18 +13,27 @@ export const setLoginUser = (value) => ({
 
 export const register = (newUser) => {
   return async (dispatch) => {
-    const { data } = await propertiesApi.createNewUser(newUser);
+    try {
+      const { data } = await propertiesApi.createNewUser(newUser);
+      if (data.message === "User created successfully.") {
+        dispatch(setLoginUser(data.data));
+      }
+    } catch (error) {
+      console.log("user already exists, please go to login");
 
-    if (data.message === "User created successfully.") {
-      dispatch(setLoginUser(data.data));
+      console.log("Something went wrong!");
     }
   };
 };
 
-export const sendData = (userData) => ({
-  action: LOGGED_USER,
-  payload: {
-    email: userData.email,
-    password: userData.password,
-  },
-});
+export const sendData = (userData) => {
+  return async (dispatch) => {
+    const { data } = await propertiesApi.loginUser(userData);
+
+    console.log(data);
+
+    if (data.message === "User signed in") {
+      dispatch(setLoginUser(data.data));
+    }
+  };
+};

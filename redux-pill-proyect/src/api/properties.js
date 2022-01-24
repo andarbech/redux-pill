@@ -27,6 +27,13 @@ const createNewUser = (query) => {
   );
 };
 
+const loginUser = (query) => {
+  console.log(query);
+  return http.post(
+    `http://localhost:8100/api/login?email=${query.email}&password=${query.password}`
+  );
+};
+
 const propertiesApi = {
   getAllProperties,
   getProperties,
@@ -34,6 +41,7 @@ const propertiesApi = {
   getPropertiesByCity,
   getPropertiesByFilter,
   createNewUser,
+  loginUser,
 };
 
 export default propertiesApi;
