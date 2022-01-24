@@ -42,20 +42,20 @@ export const setRadioFilters = (data) => {
   return (dispatch) => {
     dispatch({
       type: SET_RADIO_FILTERS,
-      payload:data
+      payload: data
     });
   };
 };
 
 export const setRadioFiltersMiddleware = (dataFilter) => {
-  
+
   if (dataFilter.filter.length <= 0) {
     const query = `${dataFilter.name}=${dataFilter.value}`
- 
+
     return async (dispatch) => {
       dispatch(loadingProperties());
       const { data } = await propertiesApi.getPropertiesByFilter(query);
-  
+
       dispatch(setRadioFilters(data));
     }
   } else {
@@ -64,14 +64,14 @@ export const setRadioFiltersMiddleware = (dataFilter) => {
       dispatch(loadingProperties());
 
       const data = []
-      
+
       dataFilter.filter.forEach(property => {
-     
+
         if (dataFilter.value == property[`${dataFilter.name}`]) {
           data.push(property)
-          }
+        }
       });
-       dispatch(setRadioFilters(data));
+      dispatch(setRadioFilters(data));
     }
   }
 
@@ -130,3 +130,31 @@ export const getFilteredProperties = (value) => ({
   type: GET_FILTERED_PROPERTIES,
   payload: value,
 });
+
+export const register = (newUser) => {
+  return async (dispatch) => {
+    const data= await propertiesApi.createNewUser(newUser);
+    dispatch(console.log(data))
+  }
+};
+
+/* export const register = (newUser) => {
+  console.log(newUser)
+  return async (dispatch) => {
+    try {
+      await $.ajax({
+        url: "http://localhost:8100/api/register",
+        type: "POST",
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify(newUser),
+        success: (res) => {
+          console.log(res);
+          localStorage.setItem("token", res.data.token);
+          dispatch({ type: REGISTER, payload: res.data });
+        },
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}; */

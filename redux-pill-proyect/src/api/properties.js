@@ -21,6 +21,12 @@ const getPropertiesByFilter = (query, baseUrl = client.baseUrl) => {
   return http.get(`${baseUrl}/properties?${query}`);
 };
 
+const createNewUser = (query) => {
+  return http.post(
+    `http://localhost:8100/api/register?email=${query.email}&name=${query.name}&password=${query.password}&confirm_password=${query.confirm_password}`)
+    .then(response => console.log(response.data))
+}
+
 
 const propertiesApi = {
   getAllProperties,
@@ -28,6 +34,7 @@ const propertiesApi = {
   getProperty,
   getPropertiesByCity,
   getPropertiesByFilter,
+  createNewUser,
 };
 
 export default propertiesApi;
