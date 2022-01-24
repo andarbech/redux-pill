@@ -2,24 +2,41 @@ import React from "react";
 import { TableCell, TableRow, Label, Badge } from "@ui5/webcomponents-react";
 
 const TableEntry = ({ item }) => {
+  const {
+    image,
+    bed,
+    bath,
+    number,
+    street,
+    city,
+    province,
+    country,
+    allow_pets,
+    has_air_conditioning,
+    has_garden,
+    has_swimming_pool,
+    has_terrace,
+    size
+  } = item;
+
   return (
     <TableRow>
       <TableCell>
-        <img src={item.image.imageURL} alt={item.image.alt} />
+        <img style={{ width: "100%" }} src={image.imageURL} alt={image.alt} />
       </TableCell>
       <TableCell>
         <Label className="address">
-          {item.number} <br></br>
-          {item.street} <br></br>
-          {item.city} <br></br>
-          {item.province} {item.country}
+          {number} <br />
+          {street} <br />
+          {city}, <br />
+          {province}, {country}
         </Label>
       </TableCell>
       <TableCell>
         <Label>{item.price}$</Label>
       </TableCell>
       <TableCell className="tableCell">
-        {item.pet ? (
+        {allow_pets ? (
           <Badge className="mb-1 mt-1" colorScheme={2}>
             Pets allowed
           </Badge>
@@ -28,16 +45,7 @@ const TableEntry = ({ item }) => {
             Pets allowed
           </Badge>
         )}
-        {/* {item.lift ? (
-          <Badge className="mb-1 mt-1" colorScheme={2}>
-            Lift
-          </Badge>
-        ) : (
-          <Badge className="mb-1 mt-1" colorScheme={8}>
-            Lift
-          </Badge>
-        )} */}
-        {item.garden ? (
+        {has_garden ? (
           <Badge className="mb-1 mt-1" colorScheme={2}>
             Garden
           </Badge>
@@ -46,7 +54,7 @@ const TableEntry = ({ item }) => {
             Garden
           </Badge>
         )}
-        {item.air_conditioning ? (
+        {has_air_conditioning ? (
           <Badge className="mb-1 mt-1" colorScheme={2}>
             Air Conditioning
           </Badge>
@@ -55,7 +63,7 @@ const TableEntry = ({ item }) => {
             Air Conditioning
           </Badge>
         )}
-        {item.swimming_pool ? (
+        {has_swimming_pool ? (
           <Badge className="mb-1 mt-1" colorScheme={2}>
             Swimming pool
           </Badge>
@@ -64,7 +72,7 @@ const TableEntry = ({ item }) => {
             Swimming pool
           </Badge>
         )}
-        {item.terrace ? (
+        {has_terrace ? (
           <Badge className="mb-1 mt-1" colorScheme={2}>
             Terrace
           </Badge>
@@ -79,19 +87,19 @@ const TableEntry = ({ item }) => {
           <li className="list-group-item d-flex justify-content-between align-items-center">
             Room
             <span className="badge bg-secondary rounded-pill">
-              {item.room}
+              {bed}
             </span>
           </li>
           <li className="list-group-item d-flex justify-content-between align-items-center">
             Bath
             <span className="badge bg-secondary rounded-pill">
-              {item.bath}
+              {bath}
             </span>
           </li>
           <li className="list-group-item d-flex justify-content-between align-items-center">
             Size
             <span className="badge bg-secondary rounded-pill">
-              {item.size}
+              {size}
             </span>
           </li>
         </ul>

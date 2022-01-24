@@ -1,12 +1,30 @@
-import React, { useState } from "react";
-import Button from "../Button";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
+import { setSearchFilters } from "../../redux/filter/actions";
+
 import "./Hero.css";
 
 function Hero() {
-  const [city, setcity] = useState('');
+  let navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const [city, setCity] = useState('');
 
   const handleChangeInput = ({ target }) => {
-    setcity(target.value)
+    setCity(target.value)
+  };
+
+  const handleSearchInput = ({ target }) => {
+    dispatch(
+      setSearchFilters({
+        name: 'search',
+        value: city,
+      })
+    );
+
+    navigate("/properties", { replace: true });
   };
 
   return (
@@ -20,14 +38,14 @@ function Hero() {
         onChange={handleChangeInput}
       />
       <div className="hero-btns">
-        <Button
+        <button
           className="btns"
           buttonStyle="btn--outline"
           buttonSize="btn--large"
-          city={city}
+          onClick={handleSearchInput}
         >
           SEARCH
-        </Button>
+        </button>
       </div>
     </div>
   );

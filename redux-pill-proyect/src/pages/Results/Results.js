@@ -14,10 +14,15 @@ import "./styles.css"
 const Results = () => {
   const { filters, properties, status } = useSelector((state) => state.filter);
 
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAllProperties(filters));
+  }, [filters])
+
   return (
     <>
-      <header className="header">
-      </header>
+      <header className="header"></header>
       <main className="main">
         <Search />
         <div className="mt-5 " />

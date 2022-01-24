@@ -1,14 +1,12 @@
-import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RangeSlider, Select, Option } from "@ui5/webcomponents-react";
 
 import {
-  getAllProperties,
   setRadioFilters,
-  filterProperties,
   setCheckboxFilters,
   setSelectFilters,
   setRangeFilters,
+  setMoreFilters,
 } from "../../redux/filter/actions";
 
 import "./styles.css";
@@ -44,19 +42,24 @@ const Filter = () => {
     );
   };
 
+  const handleChangeMoreCheckbox = ({ target }) => {
+    dispatch(
+      setMoreFilters({
+        name: target.name,
+        value: target.value,
+        checked: target.checked === true ? true : undefined,
+      })
+    );
+  };
+
   const handleChangeRangeSilder = ({ target }) => {
     dispatch(setRangeFilters({
-      name: target.className,
-      startValue: target.startValue,
-      endValue: target.endValue,
+      name_lte: 'price_lte',
+      name_gte: 'price_gte',
+      value_lte: target.endValue,
+      value_gte: target.startValue,
     }));
   }
-
-  useEffect(() => {
-    // stateFilters = useSelector((state) => state.filter.filters);
-    // dispatch(getAllProperties());
-    // dispatch(filterProperties('bath=3'));
-  }, []);
 
   return (
     <form className="form">
@@ -75,7 +78,7 @@ const Filter = () => {
           </div>
           <div>
             <input
-              value="flat/apartment"
+              value="flat"
               name="type"
               type="checkbox"
               id="flat"
@@ -155,7 +158,7 @@ const Filter = () => {
 
           <label className="container">
             <input
-              value="4"
+              value="4+"
               name="bed"
               type="radio"
               id="fourOrMoreBed"
@@ -207,9 +210,8 @@ const Filter = () => {
       <div className="filter">
         <h5 className="filter__title">Type of Deposit</h5>
         <Select name="deposit" id="deposit" onChange={handleChangeSelect}>
-          <Option selected="selected" value="zero">
-            None
-          </Option>
+          <Option selected="selected">Select deposit</Option>
+          <Option value="none">None</Option>
           <Option value="one_month">One month</Option>
           <Option value="two_months">Two months</Option>
           <Option value="three_months">Three months</Option>
@@ -231,7 +233,7 @@ const Filter = () => {
           </div>
           <div>
             <input
-              value="new"
+              value="new_house"
               name="condition"
               type="checkbox"
               id="new_house"
@@ -302,55 +304,55 @@ const Filter = () => {
         <div className="moreFilters">
           <div>
             <input
-              value="pets"
-              name="moreFilters"
+              value="allow_pets"
+              name="more_filters"
               type="checkbox"
-              id="more_filters_pets_allowed"
-              onChangeCapture={handleChangeCheckbox}
+              id="allow_pets"
+              onChangeCapture={handleChangeMoreCheckbox}
             />
-            <label htmlFor="more_filters_pets_allowed">Pets allowed</label>
+            <label htmlFor="allow_pets">Pets allowed</label>
           </div>
           <div>
             <input
-              value="air_conditioning"
-              name="moreFilters"
+              value="has_air_conditioning"
+              name="more_filters"
               type="checkbox"
-              id="more_filters_air_conditioning"
-              onChangeCapture={handleChangeCheckbox}
+              id="has_air_conditioning"
+              onChangeCapture={handleChangeMoreCheckbox}
             />
-            <label htmlFor="more_filters_air_conditioning">
+            <label htmlFor="has_air_conditioning">
               Air Conditioning
             </label>
           </div>
           <div>
             <input
-              value="terrace"
-              name="moreFilters"
+              value="has_terrace"
+              name="more_filters"
               type="checkbox"
-              id="more_filters_terrace"
-              onChangeCapture={handleChangeCheckbox}
+              id="has_terrace"
+              onChangeCapture={handleChangeMoreCheckbox}
             />
-            <label htmlFor="more_filters_terrace">Terrace</label>
+            <label htmlFor="has_terrace">Terrace</label>
           </div>
           <div>
             <input
-              value="swiming_pool"
-              name="moreFilters"
+              value="has_swimming_pool"
+              name="more_filters"
               type="checkbox"
-              id="more_filters_swiming_pool"
-              onChangeCapture={handleChangeCheckbox}
+              id="has_swimming_pool"
+              onChangeCapture={handleChangeMoreCheckbox}
             />
-            <label htmlFor="more_filters_swiming_pool">Swiming pool</label>
+            <label htmlFor="has_swimming_pool">Swimming pool</label>
           </div>
           <div>
             <input
-              value="garden"
-              name="moreFilters"
+              value="has_garden"
+              name="more_filters"
               type="checkbox"
-              id="more_filters_garden"
-              onChangeCapture={handleChangeCheckbox}
+              id="has_garden"
+              onChangeCapture={handleChangeMoreCheckbox}
             />
-            <label htmlFor="more_filters_garden">Garden</label>
+            <label htmlFor="has_garden">Garden</label>
           </div>
         </div>
       </div>

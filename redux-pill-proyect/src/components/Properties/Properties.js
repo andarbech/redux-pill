@@ -8,14 +8,7 @@ import {
 import TableEntry from "../TableEntry"
 import TableHeader from "../TableHeader"
 
-const Properties = () => {
-  const { filters, properties, status } = useSelector((state) => state.filter);
-
-  const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   dispatch(getAllProperties());
-  // }, [dispatch]);
+const Properties = ({ properties }) => {
 
   return (
     <Table
@@ -26,13 +19,13 @@ const Properties = () => {
       onRowClick={function noRefCheck() { }}
       onSelectionChange={function noRefCheck() { }}
     >
-      {status == "loading"
+      {/* {status == "loading"
         && <span>loading</span>
-      }
-      {(properties == [])
+      } */}
+      {/* {(properties == [])
         ? dispatch
         : null
-      }
+      } */}
       {properties.length > 0
         && properties.map((property) => (
           <TableEntry
