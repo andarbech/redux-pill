@@ -20,3 +20,11 @@ export const register = (newUser) => {
     }
   };
 };
+
+export const sendData = (userData) => ({
+  action: LOGGED_USER,
+  payload: {
+    email: userData.email,
+    password: userData.password,
+  },
+});
