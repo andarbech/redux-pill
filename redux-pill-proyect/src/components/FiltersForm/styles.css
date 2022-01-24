@@ -1,0 +1,162 @@
+.form {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  padding: 4%;
+  gap: 2%;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+}
+.typeHouse {
+  margin: 5%;
+  display: grid;
+  font-size: 15px;
+  width: 100%;
+}
+.houseState {
+  margin: 5%;
+  display: grid;
+  font-size: 15px;
+  width: 100%;
+}
+.bedrooms {
+  display: grid;
+  grid-template-columns: 0.25fr 0.25fr 0.25fr 0.25fr 0.25fr;
+  margin-top: 20px;
+}
+.bathrooms {
+  display: grid;
+  grid-template-columns: 0.25fr 0.25fr 0.25fr;
+  margin-top: 20px;
+}
+.moreFilters {
+  display: grid;
+  font-size: 15px;
+}
+
+.container {
+  display: block;
+  position: relative;
+  padding-left: 15px;
+  bottom: 12px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.containerLarge {
+  display: block;
+  position: relative;
+  padding-left: 10px;
+  bottom: 12px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.checkmarkLarge {
+  position: absolute;
+  top: 0;
+  left: 0px;
+  height: 30px;
+  width: 50px;
+  background-color: rgba(247, 247, 247);
+  border: 0.5px solid rgb(166, 162, 162);
+  border-radius: 5px;
+}
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.containerLarge input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 30px;
+  width: 30px;
+  background-color: #202020;
+  border-radius: 5px;
+  font-weight: bold;
+  color: #fff;
+  margin-left: 10px;
+  text-align: center;
+}
+.container input:checked ~ .checkmark {
+  background-color: #5732ff;
+  color: white;
+}
+.containerLarge input:checked ~ .checkmarkLarge {
+  background-color: #2196f3;
+  color: white;
+}
+.checkmark:after {
+  position: absolute;
+  display: none;
+}
+.checkmarkLarge:after {
+  position: absolute;
+  display: none;
+}
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+.containerLarge input:checked ~ .checkmark:after {
+  display: block;
+}
+.container .checkmark:after {
+  left: 20px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.containerLarge .checkmarkLarge:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.ui5-slider-progress {
+  background: rgb(0 0 0 / 87%) !important;
+}
+
+.ui5-slider-handle--end,
+.ui5-slider-handle--start {
+  background: rgb(87, 50, 255);
+}
+
+.moreFilters label {
+  margin-left: 5px;
+}
+
+.houseState label {
+  margin-left: 5px;
+}
+
+.typeHouse label {
+  margin-left: 5px;
+}

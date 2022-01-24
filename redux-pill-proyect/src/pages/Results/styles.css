@@ -1,0 +1,9 @@
+.header,
+.main{
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.navbar--header{
+    background-color: black;
+}
