@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Results from "./pages/Results";
 import FilterPage from "./pages/FilterPage";
 import Singup from 'pages/Singup';
+import Login from 'pages/Home/Login';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/filter" element={<FilterPage />} />
         <Route path='/results' element={<Results />} />
         <Route path='/sing-up' element={<Singup />} />
+        <Route path='/login' element={<Login />} />
       </Routes>
     </BrowserRouter>
   );

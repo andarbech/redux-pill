@@ -138,23 +138,3 @@ export const register = (newUser) => {
   }
 };
 
-/* export const register = (newUser) => {
-  console.log(newUser)
-  return async (dispatch) => {
-    try {
-      await $.ajax({
-        url: "http://localhost:8100/api/register",
-        type: "POST",
-        contentType: "application/json; charset=utf-8",
-        data: JSON.stringify(newUser),
-        success: (res) => {
-          console.log(res);
-          localStorage.setItem("token", res.data.token);
-          dispatch({ type: REGISTER, payload: res.data });
-        },
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-}; */
