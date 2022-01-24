@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { RangeSlider, Select, Option } from "@ui5/webcomponents-react";
 
 import {
@@ -7,7 +7,7 @@ import {
   setSelectFilters,
   setRangeFilters,
   setMoreFilters,
-} from "../../redux/filter/actions";
+} from "../../redux/filters/actions";
 
 import "./styles.css";
 

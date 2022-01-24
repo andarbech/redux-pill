@@ -1,10 +1,5 @@
-import { useEffect } from 'react'
-import { useSelector, useDispatch } from "react-redux";
 import { Table } from "@ui5/webcomponents-react";
 
-import {
-  getAllProperties,
-} from "../../redux/filter/actions";
 import TableEntry from "../TableEntry"
 import TableHeader from "../TableHeader"
 

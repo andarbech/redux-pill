@@ -1,6 +1,5 @@
 const initialState = {
-  properties: [],
-  filters: {
+  list: {
     type: [],
     condition: [],
     bed: undefined,

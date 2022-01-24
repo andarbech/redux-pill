@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { setSearchFilters } from "../../redux/filter/actions";
+import { setSearchFilters } from "../../redux/filters/actions";
 
 import "./Hero.css";
 
@@ -40,8 +40,6 @@ function Hero() {
       <div className="hero-btns">
         <button
           className="btns"
-          buttonStyle="btn--outline"
-          buttonSize="btn--large"
           onClick={handleSearchInput}
         >
           SEARCH

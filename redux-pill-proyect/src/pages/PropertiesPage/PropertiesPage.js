@@ -5,14 +5,13 @@ import Properties from "../../components/Properties"
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from "react-redux";
 
-import {
-  getAllProperties,
-} from "../../redux/filter/actions";
+import { getAllProperties } from "../../redux/properties/actions";
 
 import "./styles.css"
 
 const Results = () => {
-  const { filters, properties, status } = useSelector((state) => state.filter);
+  const { list: filters } = useSelector((state) => state.filters);
+  const { list: properties, status } = useSelector((state) => state.properties);
 
   const dispatch = useDispatch();
 

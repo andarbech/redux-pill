@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 
-import filterReducer from './filter/reducer';
-// import searchReducer from './search/reducer';
+import filtersReducer from './filters/reducer';
+import propertiesReducer from './properties/reducer';
 
 const reducers = combineReducers({
-  filter: filterReducer,
-  // search: searchReducer,
+  filters: filtersReducer,
+  properties: propertiesReducer,
 });
 
 export default reducers;

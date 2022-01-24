@@ -1,9 +1,4 @@
-import propertiesApi from "../../api/properties";
-
 import {
-  LOADING_PROPERTIES,
-  GET_PROPIERTIES,
-  RESET_PROPIERTIES,
   SET_RADIO_FILTERS,
   SET_CHECKBOX_FILTERS,
   SET_SELECT_FILTERS,
@@ -11,31 +6,6 @@ import {
   SET_MORE_FILTERS,
   SET_SEARCH_FILTERS
 } from "./types";
-
-export const getProperties = (value) => ({
-  type: GET_PROPIERTIES,
-  payload: value,
-});
-
-export const getPropertiesByCity = (city = "") => {
-  return async (dispatch) => {
-    dispatch(loadingProperties());
-    const { data } = await propertiesApi.getPropertiesByCity(city);
-    dispatch(getProperties(data));
-  }
-}
-
-export const loadingProperties = () => ({
-  type: LOADING_PROPERTIES
-})
-
-export const getAllProperties = (query) => {
-  return async (dispatch) => {
-    dispatch(loadingProperties());
-    const { data } = await propertiesApi.getProperties(query);
-    dispatch(getProperties(data));
-  }
-}
 
 export const setRadioFilters = dataFilter => {
   return (dispatch) => {
@@ -90,9 +60,3 @@ export const setRangeFilters = dataFilter => {
     });
   };
 };
-
-export const resetProperties = (value) => ({
-  // type: RESET_PROPIERTIES,
-  // payload: { value },
-});
-
