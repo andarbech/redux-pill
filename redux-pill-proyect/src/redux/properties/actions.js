@@ -15,11 +15,11 @@ export const loadingProperties = () => ({
   type: LOADING_PROPERTIES
 })
 
-export const getAllProperties = (query) => {
+export const getAllProperties = (query,userToken) => {
   return async (dispatch) => {
     dispatch(loadingProperties());
-    const { data } = await propertiesApi.getProperties(query);
-    dispatch(getProperties(data));
+    const { data } = await propertiesApi.getProperties(query,userToken);
+    dispatch(getProperties(data.data));
   }
 }
 

@@ -4,7 +4,9 @@ import {
   SET_SELECT_FILTERS,
   SET_RANGE_FILTERS,
   SET_MORE_FILTERS,
-  SET_SEARCH_FILTERS
+  SET_SEARCH_FILTERS,
+  LOAD_FILTERS,
+  CLEAR_FILTERS
 } from "./types";
 
 export const setRadioFilters = dataFilter => {
@@ -60,3 +62,21 @@ export const setRangeFilters = dataFilter => {
     });
   };
 };
+
+export const loadFilters = query => {
+  return (dispatch) => {
+    dispatch({
+      type: LOAD_FILTERS,
+      payload: query,
+    });
+  };
+};
+
+export const clearFilters = () => {
+  return (dispatch) => {
+    dispatch({
+      type: CLEAR_FILTERS,
+    });
+  };
+};
+

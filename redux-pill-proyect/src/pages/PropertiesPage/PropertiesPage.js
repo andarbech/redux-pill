@@ -1,9 +1,9 @@
+import { useEffect } from 'react'
+import { useSelector, useDispatch } from "react-redux";
+
 import Search from "../../components/Search"
 import FiltersForm from "../../components/FiltersForm"
 import Properties from "../../components/Properties"
-
-import { useEffect } from 'react'
-import { useSelector, useDispatch } from "react-redux";
 
 import { getAllProperties } from "../../redux/properties/actions";
 
@@ -14,7 +14,6 @@ const Results = () => {
   const { list: properties, status } = useSelector((state) => state.properties);
   const { userToken } = useSelector((state) => state.user);
   const dispatch = useDispatch();
-
   useEffect(() => {
     dispatch(getAllProperties(filters, userToken));
   }, [filters])
@@ -26,7 +25,7 @@ const Results = () => {
         <Search />
         <div className="mt-5 " />
         <FiltersForm filters={filters} />
-        <Properties properties={properties} />
+        <Properties properties={()=>console.log(properties)} />
       </main>
     </>
   )
