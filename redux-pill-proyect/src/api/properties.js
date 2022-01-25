@@ -1,8 +1,7 @@
 import http from "../services/httpService";
+const BASE_URL = `http://localhost:8100/api/`;
 
-const BASE_URL = `http://localhost:5000`;
-
-const getProperties = async (filter) => {
+const getProperties = async (filter, userToken) => {
   const {
     type,
     condition,
@@ -21,6 +20,7 @@ const getProperties = async (filter) => {
 
   return http.get(`/properties`, {
     baseURL: BASE_URL,
+    headers: { Authorization: `Bearer ${userToken}` },
     params: {
       type,
       condition,
@@ -38,12 +38,13 @@ const getProperties = async (filter) => {
     },
   });
 }
-
-const getProperty = async (id) => {
-  return http.get(`properties/${id}`, {
+const getProperty = async (id,userToken) => {
+  return http.get(`properties/${id}`,{
     baseURL: BASE_URL,
+    headers: { Authorization: `Bearer ${userToken}` }
   });
 }
+
 
 const propertiesApi = {
   getProperties,

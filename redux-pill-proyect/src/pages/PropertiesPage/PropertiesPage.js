@@ -12,11 +12,11 @@ import "./styles.css"
 const Results = () => {
   const { list: filters } = useSelector((state) => state.filters);
   const { list: properties, status } = useSelector((state) => state.properties);
-
+  const { userToken } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getAllProperties(filters));
+    dispatch(getAllProperties(filters, userToken));
   }, [filters])
 
   return (
