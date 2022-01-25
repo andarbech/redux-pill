@@ -6,6 +6,8 @@ import {
   SET_RANGE_FILTERS,
   SET_MORE_FILTERS,
   SET_SEARCH_FILTERS,
+  LOAD_FILTERS,
+  CLEAR_FILTERS
 } from "./types";
 
 const reducer = (state = initialState, action) => {
@@ -42,6 +44,7 @@ const reducer = (state = initialState, action) => {
     case SET_CHECKBOX_FILTERS: {
       const key = action.payload.name;
       const value = action.payload.value;
+      if (!(state.list[key] instanceof Array)) state.list[key] = [state.list[key]];
       const index = state.list[key].indexOf(value);
 
       (index === -1)
@@ -63,6 +66,20 @@ const reducer = (state = initialState, action) => {
           ...state.list,
           [action.payload.value]: action.payload.checked,
         },
+      };
+    }
+    case LOAD_FILTERS: {
+      return {
+        ...state,
+        list: {
+          ...state.list,
+          ...action.payload
+        }
+      }
+    }
+    case CLEAR_FILTERS: {
+      return {
+        ...initialState
       };
     }
     default: {

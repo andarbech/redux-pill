@@ -16,13 +16,15 @@ function Hero() {
     setCity(target.value)
   };
 
-  const handleSearchInput = ({ target }) => {
-    dispatch(
-      setSearchFilters({
-        name: 'search',
-        value: city,
-      })
-    );
+  const handleSearchInput = () => {
+    if (city) {
+      dispatch(
+        setSearchFilters({
+          name: 'q',
+          value: city,
+        })
+      );
+    }
 
     navigate("/properties", { replace: true });
   };

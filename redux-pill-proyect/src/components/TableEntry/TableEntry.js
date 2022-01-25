@@ -37,47 +37,47 @@ const TableEntry = ({ item }) => {
       </TableCell>
       <TableCell className="tableCell">
         {allow_pets ? (
-          <Badge className="mb-1 mt-1" colorScheme={2}>
+          <Badge className="mb-1 mt-1" colorScheme={8}>
             Pets allowed
           </Badge>
         ) : (
-          <Badge className="mb-1 mt-1" colorScheme={8}>
+          <Badge className="mb-1 mt-1" colorScheme={2}>
             Pets allowed
           </Badge>
         )}
         {has_garden ? (
-          <Badge className="mb-1 mt-1" colorScheme={2}>
+          <Badge className="mb-1 mt-1" colorScheme={8}>
             Garden
           </Badge>
         ) : (
-          <Badge className="mb-1 mt-1" colorScheme={8}>
+          <Badge className="mb-1 mt-1" colorScheme={2}>
             Garden
           </Badge>
         )}
         {has_air_conditioning ? (
-          <Badge className="mb-1 mt-1" colorScheme={2}>
+          <Badge className="mb-1 mt-1" colorScheme={8}>
             Air Conditioning
           </Badge>
         ) : (
-          <Badge className="mb-1 mt-1" colorScheme={8}>
+          <Badge className="mb-1 mt-1" colorScheme={2}>
             Air Conditioning
           </Badge>
         )}
         {has_swimming_pool ? (
-          <Badge className="mb-1 mt-1" colorScheme={2}>
+          <Badge className="mb-1 mt-1" colorScheme={8}>
             Swimming pool
           </Badge>
         ) : (
-          <Badge className="mb-1 mt-1" colorScheme={8}>
+          <Badge className="mb-1 mt-1" colorScheme={2}>
             Swimming pool
           </Badge>
         )}
         {has_terrace ? (
-          <Badge className="mb-1 mt-1" colorScheme={2}>
+          <Badge className="mb-1 mt-1" colorScheme={8}>
             Terrace
           </Badge>
         ) : (
-          <Badge className="mb-1 mt-1" colorScheme={8}>
+          <Badge className="mb-1 mt-1" colorScheme={2}>
             Terrace
           </Badge>
         )}

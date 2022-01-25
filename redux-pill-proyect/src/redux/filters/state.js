@@ -14,6 +14,7 @@ const initialState = {
     has_garden: undefined,
     has_swimming_pool: undefined,
     has_terrace: undefined,
+    q: undefined
   },
 };
 

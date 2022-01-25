@@ -1,5 +1,8 @@
-import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { RangeSlider, Select, Option } from "@ui5/webcomponents-react";
+import { stringify, parse } from "query-string";
 
 import {
   setRadioFilters,
@@ -7,12 +10,49 @@ import {
   setSelectFilters,
   setRangeFilters,
   setMoreFilters,
+  loadFilters,
+  clearFilters
 } from "../../redux/filters/actions";
 
 import "./styles.css";
 
-const Filter = () => {
+const FiltersForm = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [isFilterInitialized, setFilterInitialized] = useState(false);
+  const { list: filters } = useSelector((state) => state.filters);
+
+  const {
+    type,
+    condition,
+    bed,
+    bath,
+    price_lte,
+    price_gte,
+    deposit,
+    allow_pets,
+    has_swimming_pool,
+    has_terrace,
+    has_garden,
+    has_air_conditioning,
+  } = filters;
+
+  useEffect(() => {
+    if (!isFilterInitialized) {
+      const query = parse(location.search, {})
+
+      dispatch(loadFilters(query));
+
+      setFilterInitialized(true);
+    }
+  }, [dispatch, isFilterInitialized, location]);
+
+  useEffect(() => {
+    const query = stringify(filters);
+
+    navigate(`/properties?${query}`, { replace: true });
+  }, [filters, navigate]);
 
   const handleChangeRadio = ({ target }) => {
     dispatch(
@@ -24,6 +64,10 @@ const Filter = () => {
   };
 
   const handleChangeCheckbox = ({ target }) => {
+    console.log(target.name)
+    console.log(target.value)
+    console.log(target.checked)
+
     dispatch(
       setCheckboxFilters({
         name: target.name,
@@ -72,7 +116,8 @@ const Filter = () => {
               name="type"
               type="checkbox"
               id="HouseInput"
-              onChangeCapture={handleChangeCheckbox}
+              checked={type && type.includes("house")}
+              onChange={handleChangeCheckbox}
             />
             <label htmlFor="HouseInput">House</label>
           </div>
@@ -82,7 +127,8 @@ const Filter = () => {
               name="type"
               type="checkbox"
               id="flat"
-              onChangeCapture={handleChangeCheckbox}
+              checked={type && type.includes("flat")}
+              onChange={handleChangeCheckbox}
             />
             <label htmlFor="flat">Flat/apartament</label>
           </div>
@@ -92,7 +138,8 @@ const Filter = () => {
               name="type"
               type="checkbox"
               id="penthouse"
-              onChangeCapture={handleChangeCheckbox}
+              checked={type && type.includes("penthouse")}
+              onChange={handleChangeCheckbox}
             />
             <label htmlFor="penthouse">Penthouse</label>
           </div>
@@ -102,7 +149,8 @@ const Filter = () => {
               name="type"
               type="checkbox"
               id="duplex"
-              onChangeCapture={handleChangeCheckbox}
+              checked={type && type.includes("duplex")}
+              onChange={handleChangeCheckbox}
             />
             <label htmlFor="duplex">Duplex</label>
           </div>
@@ -118,7 +166,8 @@ const Filter = () => {
               name="bed"
               type="radio"
               id="studio"
-              onChangeCapture={handleChangeRadio}
+              checked={bed === '0' ? true : false}
+              onChange={handleChangeRadio}
             />
             <span className="checkmark"> 0+</span>
           </label>
@@ -129,7 +178,8 @@ const Filter = () => {
               name="bed"
               type="radio"
               id="oneBed"
-              onChangeCapture={handleChangeRadio}
+              checked={bed === '1' ? true : false}
+              onChange={handleChangeRadio}
             />
             <span className="checkmark">1</span>
           </label>
@@ -140,7 +190,8 @@ const Filter = () => {
               name="bed"
               type="radio"
               id="twoBed"
-              onChangeCapture={handleChangeRadio}
+              checked={bed === '2' ? true : false}
+              onChange={handleChangeRadio}
             />
             <span className="checkmark">2</span>
           </label>
@@ -150,8 +201,9 @@ const Filter = () => {
               value="3"
               name="bed"
               type="radio"
-              id="treeBed"
-              onChangeCapture={handleChangeRadio}
+              id="threeBed"
+              checked={bed === '3' ? true : false}
+              onChange={handleChangeRadio}
             />
             <span className="checkmark">3</span>
           </label>
@@ -162,7 +214,8 @@ const Filter = () => {
               name="bed"
               type="radio"
               id="fourOrMoreBed"
-              onChangeCapture={handleChangeRadio}
+              checked={bed === '4+' ? true : false}
+              onChange={handleChangeRadio}
             />
             <span className="checkmark"> 4+</span>
           </label>
@@ -178,7 +231,8 @@ const Filter = () => {
               name="bath"
               type="radio"
               id="oneBath"
-              onChangeCapture={handleChangeRadio}
+              checked={bath === '1' ? true : false}
+              onChange={handleChangeRadio}
             />
             <span className="checkmark">1</span>
           </label>
@@ -189,7 +243,8 @@ const Filter = () => {
               name="bath"
               type="radio"
               id="twoBath"
-              onChangeCapture={handleChangeRadio}
+              checked={bath === '2' ? true : false}
+              onChange={handleChangeRadio}
             />
             <span className="checkmark">2</span>
           </label>
@@ -200,7 +255,8 @@ const Filter = () => {
               name="bath"
               type="radio"
               id="threeOrMoreBath"
-              onChangeCapture={handleChangeRadio}
+              checked={bath === '3+' ? true : false}
+              onChange={handleChangeRadio}
             />
             <span className="checkmark">3+</span>
           </label>
@@ -209,8 +265,8 @@ const Filter = () => {
 
       <div className="filter">
         <h5 className="filter__title">Type of Deposit</h5>
-        <Select name="deposit" id="deposit" onChange={handleChangeSelect}>
-          <Option selected="selected">Select deposit</Option>
+        <Select name="deposit" id="deposit" onChange={handleChangeSelect} value={deposit}>
+          <Option value={undefined}>Select deposit</Option>
           <Option value="none">None</Option>
           <Option value="one_month">One month</Option>
           <Option value="two_months">Two months</Option>
@@ -227,7 +283,8 @@ const Filter = () => {
               name="condition"
               type="checkbox"
               id="needs_renovation"
-              onChangeCapture={handleChangeCheckbox}
+              checked={condition && condition.includes("renovation")}
+              onChange={handleChangeCheckbox}
             />
             <label htmlFor="needs_renovation">Needs renovation</label>
           </div>
@@ -237,7 +294,8 @@ const Filter = () => {
               name="condition"
               type="checkbox"
               id="new_house"
-              onChangeCapture={handleChangeCheckbox}
+              checked={condition && condition.includes("new_house")}
+              onChange={handleChangeCheckbox}
             />
             <label htmlFor="new_house">New House</label>
           </div>
@@ -247,7 +305,8 @@ const Filter = () => {
               name="condition"
               type="checkbox"
               id="good_condition"
-              onChangeCapture={handleChangeCheckbox}
+              checked={condition && condition.includes("good")}
+              onChange={handleChangeCheckbox}
             />
             <label htmlFor="good_condition">Good condition</label>
           </div>
@@ -258,11 +317,11 @@ const Filter = () => {
         <h5 className="filter__title">Price Range</h5>
         <RangeSlider
           className="price"
-          endValue="150000"
-          startValue="500"
+          endValue={price_lte ? price_lte : "150000"}
+          startValue={price_gte ? price_gte : "500"}
           showTooltip="true"
-          max="300000"
-          min="500"
+          max="500000"
+          min={"500"}
           step="4.000"
           onChange={handleChangeRangeSilder}
         />
@@ -308,6 +367,7 @@ const Filter = () => {
               name="more_filters"
               type="checkbox"
               id="allow_pets"
+              checked={allow_pets}
               onChangeCapture={handleChangeMoreCheckbox}
             />
             <label htmlFor="allow_pets">Pets allowed</label>
@@ -318,6 +378,7 @@ const Filter = () => {
               name="more_filters"
               type="checkbox"
               id="has_air_conditioning"
+              checked={has_air_conditioning}
               onChangeCapture={handleChangeMoreCheckbox}
             />
             <label htmlFor="has_air_conditioning">
@@ -330,6 +391,7 @@ const Filter = () => {
               name="more_filters"
               type="checkbox"
               id="has_terrace"
+              checked={has_terrace}
               onChangeCapture={handleChangeMoreCheckbox}
             />
             <label htmlFor="has_terrace">Terrace</label>
@@ -340,6 +402,7 @@ const Filter = () => {
               name="more_filters"
               type="checkbox"
               id="has_swimming_pool"
+              checked={has_swimming_pool}
               onChangeCapture={handleChangeMoreCheckbox}
             />
             <label htmlFor="has_swimming_pool">Swimming pool</label>
@@ -350,6 +413,7 @@ const Filter = () => {
               name="more_filters"
               type="checkbox"
               id="has_garden"
+              checked={has_garden}
               onChangeCapture={handleChangeMoreCheckbox}
             />
             <label htmlFor="has_garden">Garden</label>
@@ -360,4 +424,4 @@ const Filter = () => {
   );
 };
 
-export default Filter;
+export default FiltersForm;
